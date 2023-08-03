@@ -24,7 +24,7 @@ class BlogsController extends Controller
         $this->blogsMapper = $blogsMapper;
     }
 
-    public function index()
+    public function index(): void
     {
         var_dump("Hello WOrld");
     }
@@ -33,7 +33,7 @@ class BlogsController extends Controller
      * Show the form for creating a new resource.
      *
      */
-    public function create()
+    public function create(): void
     {
         //
     }
@@ -42,7 +42,7 @@ class BlogsController extends Controller
      * Store a newly created resource in storage.
      *
      */
-    public function store()
+    public function store(): void
     {
         //
     }
@@ -52,7 +52,7 @@ class BlogsController extends Controller
      *
      * @param int $id
      */
-    public function show(int $id)
+    public function show(int $id): void
     {
         //
     }
@@ -62,7 +62,7 @@ class BlogsController extends Controller
      *
      * @param int $id
      */
-    public function edit($id)
+    public function edit(int $id): void
     {
         //
     }
@@ -72,7 +72,7 @@ class BlogsController extends Controller
      *
      * @param int $id
      */
-    public function update($id)
+    public function update(int $id): void
     {
         //
     }
@@ -82,7 +82,7 @@ class BlogsController extends Controller
      *
      * @param int $id
      */
-    public function destroy($id)
+    public function destroy(int $id): void
     {
         //
     }
