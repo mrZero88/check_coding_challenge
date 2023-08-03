@@ -2,9 +2,8 @@
 
 namespace app\dal;
 
-use app\interfaces\IBlogsMapper;
-use app\interfaces\ICommentsMapper;
 use app\models\Model;
+use app\interfaces\ICommentsMapper;
 
 class CommentsMapper extends Mapper implements ICommentsMapper
 

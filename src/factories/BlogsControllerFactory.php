@@ -2,9 +2,9 @@
 
 namespace app\factories;
 
-use app\controllers\BlogsController;
-use app\controllers\Controller;
 use app\dal\BlogsMapper;
+use app\controllers\Controller;
+use app\controllers\BlogsController;
 
 class BlogsControllerFactory extends Factory
 {

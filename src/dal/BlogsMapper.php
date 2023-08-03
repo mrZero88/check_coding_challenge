@@ -2,8 +2,8 @@
 
 namespace app\dal;
 
-use app\interfaces\IBlogsMapper;
 use app\models\Model;
+use app\interfaces\IBlogsMapper;
 
 class BlogsMapper extends Mapper implements IBlogsMapper
 {
