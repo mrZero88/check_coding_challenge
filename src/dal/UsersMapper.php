@@ -12,6 +12,7 @@ class UsersMapper extends Mapper implements IUsersMapper
     public function fetchAll(): array
     {
         // TODO: Implement fetchAll() method.
+        return [];
     }
 
     public function fetch(array $where): ?Model
@@ -37,6 +38,7 @@ class UsersMapper extends Mapper implements IUsersMapper
     public function update(Model $model): ?Model
     {
         // TODO: Implement update() method.
+        return null;
     }
 
     public function delete(Model $model): void

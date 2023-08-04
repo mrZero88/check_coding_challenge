@@ -20,7 +20,7 @@ class PostsMapper extends Mapper implements IPostsMapper
         return $posts;
     }
 
-    public function fetch(int $id): ?Model
+    public function fetch(array $where): ?Model
     {
         $post = null;
         $stmt = $this->execQuery("SELECT * FROM posts WHERE id = ? order by createdAt desc", [$id]);
@@ -37,7 +37,7 @@ class PostsMapper extends Mapper implements IPostsMapper
         $query = $this->getInsertQuery($model);
         $stmt = $this->execQuery($query["query"], $query["parameters"]);
         $lastInsertedId = $stmt->insert_id;
-        return $this->fetch($lastInsertedId);
+        return $this->fetch(["id" => $lastInsertedId]);
     }
 
     public function update(Model $model): ?Model
