@@ -9,18 +9,18 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Username</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                           aria-describedby="basic-addon1">
+                    <input name="userName" type="text" class="form-control" placeholder="Username" aria-label="Username"
+                           aria-describedby="basic-addon1" value="<?php echo $data["userName"] ?? "" ?>">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Password</span>
                     </div>
-                    <input type="password" class="form-control" placeholder="Username" aria-label="Username"
-                           aria-describedby="basic-addon1">
+                    <input name="password" type="password" class="form-control" placeholder="Username"
+                           aria-label="Username"
+                           aria-describedby="basic-addon1" value="<?php echo $data["password"] ?? "" ?>">
                 </div>
                 <div style="display: flex;gap: 15px; float: right">
-                    <a href="/users/register" class="btn btn-primary">Register</a>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
             </form>

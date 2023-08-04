@@ -12,12 +12,12 @@ class User extends Model
 
     public function __construct(array $data)
     {
-        $this->id = $data["id"];
-        $this->userName = $data["userName"];
-        $this->email = $data["email"];
-        $this->password = $data["password"];
-        $this->confirmationPassword = $data["confirmationPassword"];
-        $this->tableName = "posts";
+        $this->id = $data["id"] ?? 0;
+        $this->userName = $data["userName"] ?? "";
+        $this->email = $data["email"] ?? "";
+        $this->password = $data["password"] ?? "";
+        $this->confirmationPassword = $data["confirmationPassword"] ?? $data["password"];
+        $this->tableName = "users";
     }
 
     /**
@@ -87,5 +87,15 @@ class User extends Model
     public function validate(): void
     {
 
+    }
+
+    public function toArray(): array
+    {
+        return [
+            "id" => $this->getId(),
+            "userName" => $this->getUserName(),
+            "email" => $this->getEmail(),
+            "password" => $this->getPassword()
+        ];
     }
 }

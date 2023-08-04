@@ -8,7 +8,7 @@ interface IMapper
 {
     public function fetchAll(): array;
 
-    public function fetch(int $id): ?Model;
+    public function fetch(array $where): ?Model;
 
     public function insert(Model $model): ?Model;
 

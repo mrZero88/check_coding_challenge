@@ -27,9 +27,15 @@
                             <a href="/imprint">Imprint</a>
                         </div>
                         <div class="col-md-6 text-right">
-                            <a href="/users/login">Login</a>
-                            |
-                            <a href="/users/loguserout">Logout</a>
+                            <?php if (!empty($_SESSION["loggeduser"])): ?>
+                                Hello, <?= $_SESSION["loggeduser"]->getUserName(); ?>
+                                |
+                                <a href="/users/loguserout">Logout</a>
+                            <?php else: ?>
+                                <a href="/users/register">Register</a>
+                                |
+                                <a href="/users/login">Login</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

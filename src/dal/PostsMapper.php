@@ -22,8 +22,8 @@ class PostsMapper extends Mapper implements IPostsMapper
 
     public function fetch(int $id): ?Model
     {
-        $stmt = $this->execQuery("SELECT * FROM posts WHERE id = ? order by createdAt desc", [$id]);
         $post = null;
+        $stmt = $this->execQuery("SELECT * FROM posts WHERE id = ? order by createdAt desc", [$id]);
 
         foreach ($stmt->get_result() as $row) {
             $post = new Post($row);

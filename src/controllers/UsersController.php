@@ -59,14 +59,14 @@ class UsersController extends Controller
         $data = [
             "userName" => htmlspecialchars($_POST["userName"]),
             "email" => htmlspecialchars($_POST["email"]),
-            "password" => htmlspecialchars($_POST["password"]),
-            "confirmationPassword" => htmlspecialchars($_POST["confirmationPassword"])
+            "password" => password_hash(htmlspecialchars($_POST["password"]), PASSWORD_DEFAULT),
+            "confirmationPassword" => password_hash(htmlspecialchars($_POST["confirmationPassword"]), PASSWORD_DEFAULT)
         ];
 
         try {
             $user = new User($data);
             $user->validate();
-            $this->tableMapper->insert($user);
+            $user = $this->tableMapper->insert($user);
             $_SESSION["loggeduser"] = $user;
             $this->redirect("/");
         } catch (\Exception $e) {
@@ -79,7 +79,26 @@ class UsersController extends Controller
 
     public function loguserin(): void
     {
-        // TODO: Implement store() method.
+        $data = [
+            "userName" => htmlspecialchars($_POST["userName"]),
+            "password" => htmlspecialchars($_POST["password"])
+        ];
+
+        try {
+            $user = new User($data);
+            $user = $this->tableMapper->fetch(["userName" => $user->getUserName()]);
+            if (!empty($user) && password_verify($data["password"], $user->getPassword())) {
+                $_SESSION["loggeduser"] = $user;
+                $this->redirect("/");
+            } else {
+                throw new \Exception();
+            }
+        } catch (\Exception $e) {
+            $errors = [];
+            $selectedView = "../src/views/loginview.php";
+        }
+
+        include "../src/views/indexview.php";
     }
 
     public function loguserout(): void
@@ -87,6 +106,6 @@ class UsersController extends Controller
         if (!empty($_SESSION["loggeduser"])) {
             unset($_SESSION["loggeduser"]);
         }
-
+        $this->redirect("/");
     }
 }

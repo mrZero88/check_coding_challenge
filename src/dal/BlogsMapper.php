@@ -14,7 +14,7 @@ class BlogsMapper extends Mapper implements IBlogsMapper
         return [];
     }
 
-    public function fetch(int $id): ?Model
+    public function fetch(array $where): ?Model
     {
         // TODO: Implement fetch() method.
         return null;

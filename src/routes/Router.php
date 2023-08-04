@@ -21,6 +21,7 @@ class Router
         $routes = array_values($routes);
 
         if (!empty($routes)) {
+            session_start();
             $route = $routes[0];
             $id = $this->getIdFromRoute($routePath, $route["route"]);
 

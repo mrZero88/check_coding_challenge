@@ -7,7 +7,9 @@ abstract class Model
     protected int $id = 0;
     protected string $tableName;
 
-    public abstract function isValid(): bool;
+    public abstract function validate(): void;
+
+    public abstract function toArray(): array;
 
     /**
      * @return int

@@ -9,7 +9,7 @@ use app\models\Model;
 
 abstract class Mapper
 {
-    private ?mysqli $connection;
+    private ?mysqli $connection = null;
 
     protected function execQuery(string $query, ?array $params = null): ?mysqli_stmt
     {
@@ -22,8 +22,8 @@ abstract class Mapper
             }
             $stmt->execute();
             return $stmt;
-        } catch (Exception) {
-
+        } catch (Exception $e) {
+            echo $e->getMessage();
         } finally {
             $this->disconnect();
         }
@@ -36,8 +36,8 @@ abstract class Mapper
      */
     protected function connect(): void
     {
-        $dbConfig = include("../DbConfig.php");
-        if ($this->connection === null || is_resource($this->connection) === false) {
+        $dbConfig = include("../src/DbConfig.php");
+        if ($this->connection === null && is_resource($this->connection) === false) {
             $this->connection = new mysqli($dbConfig["servername"], $dbConfig["username"], $dbConfig["password"], $dbConfig["dbname"]);
             if ($this->connection->connect_error) {
                 die("Connection failed: " . $this->connection->connect_error);
@@ -76,7 +76,7 @@ abstract class Mapper
 
     protected function getInsertQuery(Model $model): array
     {
-        $modelArray = (array)$model;
+        $modelArray = $model->toArray();
         return [
             "query" => "INSERT INTO " . $model->getTableName() . " (" . $this->getInsertColumns($model) . ") VALUES (" . $this->getInsertValues($model) . ")",
             "parameters" => array_values($modelArray)
@@ -93,9 +93,25 @@ abstract class Mapper
         ];
     }
 
+    protected function getSelectWheres(array $where): string
+    {
+        $parts = array_map(function ($key, $value) {
+            return "$key = ?";
+        }, array_keys($where), array_values($where));
+
+        return implode(" and ", $parts);
+    }
+
+    protected function getSelectWhereParameters(array $where): array
+    {
+        return array_map(function ($key, $value) {
+            return $value;
+        }, array_keys($where), array_values($where));
+    }
+
     private function getInsertColumns(Model $model): string
     {
-        $modelArray = (array)$model;
+        $modelArray = $model->toArray();
         return implode(",", array_keys($modelArray));
     }
 
@@ -105,18 +121,18 @@ abstract class Mapper
 
         $parts = array_map(function ($key, $value) {
             return "$key = ?";
-        }, $modelArray);
+        }, array_keys($modelArray), array_values($modelArray));
 
         return implode(",", $parts);
     }
 
     private function getInsertValues(Model $model): string
     {
-        $modelArray = (array)$model;
+        $modelArray = $model->toArray();
 
         $parts = array_map(function ($key, $value) {
             return "?";
-        }, $modelArray);
+        }, array_keys($modelArray), array_values($modelArray));
 
         return implode(",", $parts);
     }
