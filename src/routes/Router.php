@@ -5,7 +5,7 @@ namespace app\routes;
 class Router
 {
     private array $routes = [];
-    
+
     public function __construct()
     {
         $this->routes = include("routes.php");

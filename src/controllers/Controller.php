@@ -2,8 +2,13 @@
 
 namespace app\controllers;
 
+use app\interfaces\IMapper;
+use JetBrains\PhpStorm\NoReturn;
+
 abstract class Controller
 {
+    protected IMapper $tableMapper;
+
     public abstract function index(): void;
 
     /**
@@ -45,4 +50,26 @@ abstract class Controller
      * @param int $id
      */
     public abstract function destroy(int $id): void;
+
+    /**
+     * @return IMapper
+     */
+    public function getTableMapper(): IMapper
+    {
+        return $this->tableMapper;
+    }
+
+    /**
+     * @param IMapper $tableMapper
+     */
+    public function setTableMapper(IMapper $tableMapper): void
+    {
+        $this->tableMapper = $tableMapper;
+    }
+
+    #[NoReturn] protected function redirect(string $to): void
+    {
+        header("Location: $to");
+        exit;
+    }
 }

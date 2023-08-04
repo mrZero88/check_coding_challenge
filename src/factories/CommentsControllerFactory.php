@@ -13,7 +13,7 @@ class CommentsControllerFactory extends Factory
     {
         $commentsMapper = new CommentsMapper();
         $commentsController = new CommentsController();
-        $commentsController->setCommentsMapper($commentsMapper);
+        $commentsController->setTableMapper($commentsMapper);
         return $commentsController;
     }
 }

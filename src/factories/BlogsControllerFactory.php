@@ -12,7 +12,7 @@ class BlogsControllerFactory extends Factory
     {
         $blogsMapper = new BlogsMapper();
         $blogsController = new BlogsController();
-        $blogsController->setBlogsMapper($blogsMapper);
+        $blogsController->setTableMapper($blogsMapper);
         return $blogsController;
     }
 }

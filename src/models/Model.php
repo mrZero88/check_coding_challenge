@@ -2,10 +2,12 @@
 
 namespace app\models;
 
-class Model
+abstract class Model
 {
     protected int $id = 0;
     protected string $tableName;
+
+    public abstract function isValid(): bool;
 
     /**
      * @return int

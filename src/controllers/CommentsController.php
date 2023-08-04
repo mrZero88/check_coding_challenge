@@ -2,88 +2,40 @@
 
 namespace app\controllers;
 
-use app\interfaces\ICommentsMapper;
-
 class CommentsController extends Controller
 {
-    protected ICommentsMapper $commentsMapper;
-
-    /**
-     * @return ICommentsMapper
-     */
-    public function getCommentsMapper(): ICommentsMapper
-    {
-        return $this->commentsMapper;
-    }
-
-    /**
-     * @param ICommentsMapper $commentsMapper
-     */
-    public function setCommentsMapper(ICommentsMapper $commentsMapper): void
-    {
-        $this->commentsMapper = $commentsMapper;
-    }
-
     public function index(): void
     {
-        var_dump("Welcome to comments index!");
+        // TODO: Implement index() method.
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     */
     public function create(): void
     {
-        //
+        // TODO: Implement create() method.
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     */
     public function store(): void
     {
-        //
+        // TODO: Implement store() method.
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     */
     public function show(int $id): void
     {
-        //
+        // TODO: Implement show() method.
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     */
     public function edit(int $id): void
     {
-        //
+        // TODO: Implement edit() method.
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param int $id
-     */
     public function update(int $id): void
     {
-        //
+        // TODO: Implement update() method.
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     */
     public function destroy(int $id): void
     {
-        var_dump("DESTROY!");
+        // TODO: Implement destroy() method.
     }
 }

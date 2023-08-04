@@ -12,7 +12,7 @@ class PostsControllerFactory extends Factory
     {
         $postsMapper = new PostsMapper();
         $postsController = new PostsController();
-        $postsController->setPostsMapper($postsMapper);
+        $postsController->setTableMapper($postsMapper);
         return $postsController;
     }
 }

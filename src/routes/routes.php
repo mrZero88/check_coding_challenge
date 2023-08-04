@@ -8,6 +8,12 @@ return [
         "factory" => 'app\factories\BlogsControllerFactory'
     ],
     [
+        "route" => "/imprint",
+        "controller" => "app\controllers\BlogsController",
+        "method" => "imprint",
+        "factory" => 'app\factories\BlogsControllerFactory'
+    ],
+    [
         "route" => "/posts",
         "controller" => "app\controllers\PostsController",
         "method" => "index",
@@ -17,6 +23,12 @@ return [
         "route" => "/posts/{id}",
         "controller" => "app\controllers\PostsController",
         "method" => "show",
+        "factory" => 'app\factories\PostsControllerFactory'
+    ],
+    [
+        "route" => "/posts/create",
+        "controller" => "app\controllers\PostsController",
+        "method" => "create",
         "factory" => 'app\factories\PostsControllerFactory'
     ],
     [
@@ -38,9 +50,27 @@ return [
         "factory" => 'app\factories\UsersControllerFactory'
     ],
     [
+        "route" => "/users/register",
+        "controller" => "app\controllers\UsersController",
+        "method" => "register",
+        "factory" => 'app\factories\UsersControllerFactory'
+    ],
+    [
+        "route" => "/users/registeruserin",
+        "controller" => "app\controllers\UsersController",
+        "method" => "registeruserin",
+        "factory" => 'app\factories\UsersControllerFactory'
+    ],
+    [
         "route" => "/users/loguserin",
         "controller" => "app\controllers\UsersController",
         "method" => "loguserin",
         "factory" => 'app\factories\UsersControllerFactory'
-    ]
+    ],
+    [
+        "route" => "/users/loguserout",
+        "controller" => "app\controllers\UsersController",
+        "method" => "loguserout",
+        "factory" => 'app\factories\UsersControllerFactory'
+    ],
 ];
